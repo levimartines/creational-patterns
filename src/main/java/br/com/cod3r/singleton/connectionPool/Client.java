@@ -4,22 +4,32 @@ import br.com.cod3r.singleton.connectionPool.conn.Connection;
 import br.com.cod3r.singleton.connectionPool.conn.ConnectionPool;
 
 public class Client {
+
 	public static void doQuery1() {
-		Connection conn = ConnectionPool.getInstance().getConnection();
-		if(conn != null)
+		ConnectionPool pool = ConnectionPool.getInstance();
+		Connection conn = pool.getConnection();
+		if (conn != null) {
 			conn.query("SELECT * FROM A1");
+		}
+		pool.leaveConnection(conn);
 	}
-	
+
 	public static void doQuery2() {
-		Connection conn = ConnectionPool.getInstance().getConnection();
-		if(conn != null)
+		ConnectionPool pool = ConnectionPool.getInstance();
+		Connection conn = pool.getConnection();
+		if (conn != null) {
 			conn.query("SELECT * FROM A2");
+		}
+		pool.leaveConnection(conn);
 	}
-	
+
 	public static void doQuery3() {
-		Connection conn = ConnectionPool.getInstance().getConnection();
-		if(conn != null)
+		ConnectionPool pool = ConnectionPool.getInstance();
+		Connection conn = pool.getConnection();
+		if (conn != null) {
 			conn.query("SELECT * FROM A3");
+		}
+		pool.leaveConnection(conn);
 	}
 
 	public static void main(String[] args) {
