@@ -1,7 +1,7 @@
 package br.com.cod3r.singleton.connectionPool;
 
-import br.com.cod3r.singleton.connectionPool.conn.Connection;
-import br.com.cod3r.singleton.connectionPool.conn.ConnectionPool;
+import br.com.cod3r.singleton.connectionPool.singleton.Connection;
+import br.com.cod3r.singleton.connectionPool.singleton.ConnectionPool;
 
 public class Client {
 
