@@ -8,19 +8,31 @@ import br.com.cod3r.factory.apple.model.IPhoneXSMax;
 
 public class IPhoneSimpleFactory {
 
-	public static IPhone orderIPhone(String generation, String level) {
-		IPhone device = null;
-		if ("X".equals(generation)) {
-			device = "standard".equals(level) ? new IPhoneX() : new IPhoneXSMax();
-		} else if (generation.equals("11")) {
-			device = "standard".equals(level) ? new IPhone11() : new IPhone11Pro();
-		}
-		if (device != null) {
-			device.getHardware();
-			device.assemble();
-			device.certificates();
-			device.pack();
-		}
-		return device;
-	}
+    public static IPhone orderIPhone(String generation, String level) {
+        IPhone device = null;
+        if (isIphoneX(generation)) {
+            device = isStandard(level) ? new IPhoneX() : new IPhoneXSMax();
+        } else if (generation.equals("11")) {
+            device = isStandard(level) ? new IPhone11() : new IPhone11Pro();
+        }
+        if (device != null) {
+            prepare(device);
+        }
+        return device;
+    }
+
+    private static void prepare(IPhone device) {
+        device.getHardware();
+        device.assemble();
+        device.certificates();
+        device.pack();
+    }
+
+    private static boolean isIphoneX(String generation) {
+        return "X".equals(generation);
+    }
+
+    private static boolean isStandard(String level) {
+        return "standard".equals(level);
+    }
 }
